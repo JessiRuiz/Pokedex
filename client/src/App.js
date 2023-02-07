@@ -12,8 +12,10 @@ function App() {
     <div className="App">
       <Router history={history}>
         <NavBar/>
-        <h1>Henry Pokemon</h1>
-        <Route path='/'>
+        <div className='title'>
+          <h1>Henry Pokemon</h1>
+        </div>
+        <Route exact path='/'>
           <Home/>
         </Route>
         <Route exact path= "/create">

@@ -37,7 +37,7 @@ export default function CreatePokemon (){
         <h2>Create Pokemon</h2>
         <form onSubmit={handleSubmit}>
             <label> Id </label>
-            <Input value={id} onChange={setId}/>
+            <Input type="number" min="1009" max="" value={id} onChange={setId}/>
             <label> Name </label>
             <Input value={name} onChange={setName}/>
             <label> Type </label>

@@ -1,8 +1,14 @@
 .create {
-max-width: 400px;
 margin: 0 auto;
 text-align: center;
+padding-left: 50px;
+padding-right: 50px;
 padding-bottom: 50px;
+padding-top: 10px;
+background-color: white;
+width:fit-content;
+min-width: 10cm;
+border-radius: 10px;
 }
 .create label {
  text-align: left;
@@ -10,10 +16,12 @@ padding-bottom: 50px;
 }
 
 .create h2 {
- font-weight: 200;
+ font-weight: 550;
  font-size: 25px;
  color: red;
- margin-bottom: 30px;   
+ margin-bottom: 30px;  
+ font-family: 'Courier New', Courier, monospace;
+ font-size: 167.5%; 
 }
 
 

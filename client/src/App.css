@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+h1{
+ color: rgba(3, 63, 136, 0.951);
+ font: weight 1200px;
+ font-size: 70px;
+ background-color: white;
+ width: fit-content;
+ padding: 12px;
+ border-radius: 30px;
+ font-family: "pokemon";
+ font: 800 40px;
+ -webkit-text-fill-color: rgb(255, 187, 0);
+ -webkit-text-stroke: 2px;
+}
+
+.title {
+display: flex;
+justify-content: center;
+}

@@ -5,6 +5,7 @@ select {
     border: 1px solid bisque;
     box-sizing: border-box;
     display: block;
+    border-radius: 8px;
    }
 
 option {

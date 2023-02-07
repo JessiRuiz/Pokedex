@@ -1,17 +1,15 @@
 .home {
-    max-width: 400px;
+    max-width: 1000px;
     margin: 0 auto;
     text-align: center;
     padding-bottom: 50px;
+    width: fit-content;
     }
-    .home label {
-     text-align: left;
-     display: block;
-    }
-    
-    .home h2 {
-     font-weight: 200;
-     font-size: 25px;
-     color: red;
-     margin-bottom: 30px;   
+
+    .home > img{
+        max-width: 100%;
+        border-radius: 20px;
+        outline-color: white;
+        outline-width: 10px;
+        outline-style: solid;
     }

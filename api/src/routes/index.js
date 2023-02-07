@@ -17,13 +17,12 @@ router.get('/', (req, res)=>{
 } )
 
 router.post('/pokemons', async (req, res) => {
-    const {name} = req.body
-    console.log(req.body);
+    const pokemon = req.body
     try{
-      const respu = await addPokemon(name)
+      const respu = await addPokemon(pokemon)
       res.status(201).json({msg : respu})
     } catch(error){
-      res.status(400).json({err : error.message})
+      res.status(400).json({error : error.message})
     }
   })
 

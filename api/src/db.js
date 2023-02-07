@@ -9,6 +9,11 @@ const {
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5433/pokemon`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  hooks: {
+    beforeBulkSync: () => {
+      sequelize.query('CREATE SEQUENCE IF NOT EXISTS pokemon_sequence CACHE 1009')
+    }
+  },
 });
 const basename = path.basename(__filename);
 
