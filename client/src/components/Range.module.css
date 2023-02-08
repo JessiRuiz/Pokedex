@@ -1,0 +1,16 @@
+.range {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 10px 0;
+    border: 1px solid bisque;
+    box-sizing: border-box;
+    display: block;
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+   }
+span {
+ color: #000;
+ font-family:Arial, Helvetica, sans-serif;
+ font-size: 15px;
+ font-weight: 100;
+}   
