@@ -5,6 +5,8 @@ import NavBar from './components/NavBar'
 import Home from './containers/Home';
 import CreatePokemon from './containers/CreatePokemon';
 import './App.css';
+import PokemonDetails from './containers/PokemonDetails';
+import Pokedex from './containers/Pokedex';
 
 function App() {
   const history = createBrowserHistory()
@@ -20,6 +22,12 @@ function App() {
         </Route>
         <Route exact path= "/create">
           <CreatePokemon/>
+        </Route>
+        <Route exact path= "/pokedex">
+            <Pokedex />
+        </Route>
+        <Route exact path="/pokedex/:id">
+          <PokemonDetails/>
         </Route>
       </Router>
     </div>
