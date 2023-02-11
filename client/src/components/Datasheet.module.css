@@ -1,0 +1,75 @@
+.datasheet{
+    height: 100%;
+    width: 80%;
+    min-height: 15cm;
+    overflow: hidden;
+    box-shadow:0 2px 20px gray;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 200ms ease-in;
+    background-color: rgba(255, 255, 255, 0.7);
+    gap: 5px;
+    font-family: Arial, sans-serif;
+    flex-wrap: wrap;
+}
+
+.square{
+    background-color: rgba(255, 255, 255, 0.5);
+    min-width: 350px;
+    max-width: 700px;
+
+}
+
+
+.image{
+    height: 90%;
+    width: 100%;
+    min-width: 5cm;
+    min-height: 5cm;
+    object-fit: cover;
+    
+}
+
+.number{
+    padding: 20px;
+    color: white;
+    font-family: Arial, sans-serif;
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke: 1px;
+    font-weight: bolder;
+    font-size: 35px;
+}
+
+.name{
+    padding: 20px;
+    color: white;
+    font-size: 45px;
+    font-family: Arial, sans-serif;
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke: 1px;
+    font-weight: bolder;
+}
+
+.type{
+    padding: 0 10px;
+    color:white;
+    font-size: larger;
+    font-family: Arial, sans-serif;
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke: .5px;
+    font-weight: bolder;
+}
+
+.stats{
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: 15px;
+    background-color: transparent;
+    color: white;
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke: .5px;
+}

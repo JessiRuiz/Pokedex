@@ -6,7 +6,7 @@ const foundPoke = await axios({
     method: 'get',
     url:`https://pokeapi.co/api/v2/pokemon/${name}`,
 })
-return foundPoke
+return foundPoke.data
 }
 
 module.exports = {findPokemon}

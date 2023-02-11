@@ -1,8 +1,8 @@
-import { CREATE_POKEMON } from "./actions";
+import { CREATE_POKEMON, GET_POKEMON } from "./actions";
 
-const initialState = {
+export const initialState = {
     pokemons: [],
-    pokemponDetails: {},
+    pokemonDetails: {},
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -14,7 +14,13 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 pokemonDetails: [...state.pokemons, action.payload]
             }
-            default:
+        case GET_POKEMON:
+            return{
+                ...state,
+                pokemonDetails: action.payload
+            }
+        default:
+            return {...state}
        }
 };
 export default rootReducer;

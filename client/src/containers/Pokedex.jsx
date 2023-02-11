@@ -6,7 +6,6 @@ import Card from "../components/Card";
 export default function Pokedex (){
     return (
     <div className={styles.wrapper}>
-        POKEDEX
        <Card/>
     </div>)
 }

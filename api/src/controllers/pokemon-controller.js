@@ -1,7 +1,16 @@
 const { Pokemon } = require('../db.js');
 const {findPokemon} = require('../services/pokeapi')
 
-
+const getPokemon = async (id) => {
+  try{let poke = await findPokemon(id)
+    if(poke){
+      const {id, name, type, imagen, life, attack, defense, speed, height, weight} = poke
+      return {id, name, type, imagen, life, attack, defense, speed, height, weight}
+    }
+  }catch(error){
+   throw new Error ("please introduce a valid id")
+  }
+}
 const addPokemon = async (pokemon) => {
   let poke = pokemon
   try{
@@ -21,4 +30,4 @@ const addPokemon = async (pokemon) => {
   }
   
 };
-  module.exports = addPokemon;
+  module.exports = {addPokemon, getPokemon};

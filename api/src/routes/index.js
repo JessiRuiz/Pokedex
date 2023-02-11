@@ -1,4 +1,4 @@
-const addPokemon = require('../controllers/pokemon-controller')
+const {addPokemon, getPokemon} = require('../controllers/pokemon-controller');
 const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -16,11 +16,22 @@ router.get('/', (req, res)=>{
       }
 } )
 
+router.get('/pokemons/:id', async (req, res) =>{
+  const pokeid = req.params.id
+  try {
+    const resp = await getPokemon(pokeid)
+    console.log(resp, "resp")
+    res.status(201).json(resp)
+  }catch(error){
+    res.status(400).json({error : error.message})
+   }
+});
+
 router.post('/pokemons', async (req, res) => {
     const pokemon = req.body
     try{
       const respu = await addPokemon(pokemon)
-      res.status(201).json({msg : respu})
+      res.status(201).json(respu)
     } catch(error){
       res.status(400).json({error : error.message})
     }
