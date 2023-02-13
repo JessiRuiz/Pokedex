@@ -1,6 +1,7 @@
 import React from "react"
 import * as styles from "./Datasheet.module.css";
 import TypeTag from "../components/TypeTag";
+import StatBar from "./StatBar";
 
 export default function Datasheet(props){
     return (
@@ -17,13 +18,15 @@ export default function Datasheet(props){
                 {props.type2?<TypeTag type={props.type2}/>: null}
             </div>
             <div className={styles.line}>...</div>
-            <div className={styles.stats}>life {props.life}</div>
-            <div className={styles.stats}>attack {props.attack}</div>
-            <div className={styles.stats}>defense {props.defense}</div>
-            <div className={styles.stats}>speed {props.speed}</div>
-            <div className={styles.line}>...</div>
-            <div className={styles.size}>height {props.height}</div>
-            <div className={styles.size}>weight {props.weight}</div>
+            <div className={styles['stat-grid']}>
+                <div className={styles.stats}>life: {props.life}</div><StatBar percentage={props.life/255*100} type={props.type1}/>
+                <div className={styles.stats}>attack: {props.attack}</div><StatBar percentage={props.attack/255*100} type={props.type1}/>
+                <div className={styles.stats}>defense: {props.defense}</div><StatBar percentage={props.defense/255*100} type={props.type1}/>
+                <div className={styles.stats}>speed: {props.speed}</div><StatBar percentage={props.speed/255*100} type={props.type1}/>
+            </div>
+
+            <div className={styles.size}>Height {props.height}ft</div>
+            <div className={styles.size}>Weight {props.weight} lb</div>
         </div>
     </div>);
 }

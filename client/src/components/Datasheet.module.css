@@ -30,6 +30,7 @@
 }
 
 .image{
+    margin: 10px;
     height: 90%;
     width: 100%;
     min-width: 5cm;
@@ -76,7 +77,10 @@
     font-weight: bolder;
     float: left;
 }
-
+.stat-grid {
+    display: grid;
+    grid-template-columns: fit-content(220px) auto;
+}
 .stats{
     margin: 5px;
     padding: 5px;
@@ -96,13 +100,12 @@
     margin: 5px;
     padding: 5px;
     font-family: 'Courier New', Courier, monospace;
-    font-weight: 300px;
-    font-size: 20px;
+    font-weight: 500;
+    font-size: 21px;
     background-color: transparent;
-    color: gray;
+    color: rgb(100, 98, 98);
     -webkit-text-fill-color: black;
-    -webkit-text-stroke: .5px;
+    -webkit-text-stroke: 1px;
     text-align: center;
-    text-transform: capitalize;
     float: left;
 }
