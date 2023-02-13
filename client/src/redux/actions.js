@@ -1,6 +1,8 @@
 export const CREATE_POKEMON = 'CREATE_POKEMON';
 export const GET_POKEMON = 'GET_POKEMON';
 export const GET_ALL_POKEMON = 'GET_ALL_POKEMON';
+export const GET_BY_NAME = 'GET_BY_NAME';
+export const GET_BY_NAME_ERROR ='GET_BY_NAME_ERROR';
 
 export const addPokemon = (poke) => {
     return function(dispatch){
@@ -28,11 +30,32 @@ export const getPokemon = (id) => {
             payload: data
         }))
     }
-
 };
-export const getAllPokemon = ({limit=12, offset=0}) => {
+
+export const getByName = (name) => {
     return function(dispatch){
-        fetch(`http://localhost:3001/pokemons?offset=${offset}&limit=${limit}`,{
+        fetch(`http://localhost:3001/pokemons?name=${name}`,{
+                method: 'GET',
+                headers: {"Content-Type": "application/json"},
+                })
+        .then(res => res.json())
+        .then((data) => {
+            if(data.error){
+                dispatch({
+                    type: GET_BY_NAME_ERROR,
+                    payload: data.error
+                })
+            }else{
+            dispatch({
+            type: GET_BY_NAME,
+            payload: data
+        })}})
+    }
+};
+
+export const getAllPokemon = ({limit=12, offset=0, type="", sort="id", order="ascending"}) => {
+    return function(dispatch){
+        fetch(`http://localhost:3001/pokemons?offset=${offset}&limit=${limit}&type=${type}&sort=${sort}&order=${order}`,{
                 method: 'GET',
                 headers: {"Content-Type": "application/json"},
                 })

@@ -8,6 +8,7 @@ export default function TypeSelector ({type, onChange}){
             value={type}
             onChange={(e)=> onChange(e.target.value)}
          >
+            <option value="" > Select Type </option>
             <option value = "bug"> Bug </option>
             <option value = "dark"> Dark </option>
             <option value = "dragon"> Dragon </option>

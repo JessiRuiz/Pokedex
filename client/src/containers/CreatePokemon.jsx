@@ -10,7 +10,7 @@ import {useDispatch} from 'react-redux';
 
 export default function CreatePokemon (){ 
     const [name, setName] = useState('');
-    const [type, setType] = useState('Bug');
+    const [type1, setType] = useState('Bug');
     const [imagen, setImagen] = useState('');
     const [life, setLife] = useState(125);
     const [attack, setAttack] = useState(125);
@@ -23,7 +23,7 @@ export default function CreatePokemon (){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const poke = {name, type, imagen, life, attack, defense, speed, height, weight};
+        const poke = {name, type1, imagen, life, attack, defense, speed, height, weight};
         try {
             dispatch(actions.addPokemon(poke))
             console.log('new Pokemon added');
@@ -39,7 +39,7 @@ export default function CreatePokemon (){
             <label> Name </label>
             <Input value={name} onChange={setName}/>
             <label> Type </label>
-            <TypeSelector value={type} onChange={setType}/>
+            <TypeSelector value={type1} onChange={setType}/>
             <label> Image </label>
             <Input value={imagen} onChange={setImagen}/>
             <label> Life </label>

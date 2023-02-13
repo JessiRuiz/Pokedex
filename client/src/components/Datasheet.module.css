@@ -20,9 +20,14 @@
     background-color: rgba(255, 255, 255, 0.5);
     min-width: 350px;
     max-width: 700px;
+   
 
 }
-
+.line{
+    color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    margin: 10px;
+}
 
 .image{
     height: 90%;
@@ -35,41 +40,69 @@
 
 .number{
     padding: 20px;
-    color: white;
-    font-family: Arial, sans-serif;
+    color: gray;
     -webkit-text-fill-color: black;
     -webkit-text-stroke: 1px;
-    font-weight: bolder;
     font-size: 35px;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 15px;
+    text-align: left;
+    margin: 5px;
+    font-weight: lighter;
+    width: 100%;
 }
 
 .name{
-    padding: 20px;
-    color: white;
+    padding: 10px;
+    color:grey;
     font-size: 45px;
-    font-family: Arial, sans-serif;
+    font-family: 'Courier New', Courier, monospace;
     -webkit-text-fill-color: black;
     -webkit-text-stroke: 1px;
-    font-weight: bolder;
+    font-weight: bold;
+    text-transform: capitalize;
+    text-align: left;
+    width: 100%;
+    margin: 5px;
 }
 
 .type{
     padding: 0 10px;
     color:white;
-    font-size: larger;
-    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
     -webkit-text-fill-color: black;
     -webkit-text-stroke: .5px;
     font-weight: bolder;
+    float: left;
 }
 
 .stats{
-    padding: 10px;
+    margin: 5px;
+    padding: 5px;
     font-family: 'Courier New', Courier, monospace;
-    font-weight: bolder;
-    font-size: 15px;
+    font-weight: 300px;
+    font-size: 20px;
     background-color: transparent;
-    color: white;
+    color: gray;
     -webkit-text-fill-color: black;
     -webkit-text-stroke: .5px;
+    text-align: left;
+    text-transform: capitalize;
+
+}
+
+.size{
+    margin: 5px;
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 300px;
+    font-size: 20px;
+    background-color: transparent;
+    color: gray;
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke: .5px;
+    text-align: center;
+    text-transform: capitalize;
+    float: left;
 }

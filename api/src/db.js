@@ -11,7 +11,7 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   hooks: {
     beforeBulkSync: () => {
-      sequelize.query('CREATE SEQUENCE IF NOT EXISTS pokemon_sequence CACHE 1009')
+      sequelize.query('CREATE SEQUENCE IF NOT EXISTS pokemon_sequence INCREMENT 1 START 1009')
     }
   },
 });

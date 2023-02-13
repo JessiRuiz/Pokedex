@@ -9,11 +9,11 @@ const foundPoke = await axios({
 return foundPoke.data
 }
 
-const getItAll = async ({offset, limit})=> {
-    console.log(offset, limit);
+const getItAll = async ()=> {
+    
     const allPokes = await axios({
         method: 'get',
-        url:`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`,
+        url:`https://pokeapi.co/api/v2/pokemon?offset=${0}&limit=${40}`,
     })
     return allPokes.data
     }

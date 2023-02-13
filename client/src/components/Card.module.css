@@ -12,34 +12,50 @@
 
 .body{
     font-family: Arial, sans-serif;
-    margin: 20px;
+    margin: 10px;
 }
 
 .image{
-    height: 120px;
+    max-height: 200px;
     width: 100%;
     object-fit: cover;
 }
 
-.title{
-    padding: 10px;
+.id{
+    font-family: 'Courier New', Courier, monospace;
+    padding: 5px;
+    text-align: left;
+    margin: 5px;
+    font-size: 17px;
+    font-weight: lighter;
+    width: 100%;
 }
 
-.description{
-    padding: 0 10px;
+.name{
+    padding: 0 5px;
+    text-transform: capitalize;
+    font-size: 25px;
+    font-weight: lighter;
+    text-align: left;
+    width: 100%;
+    margin: 10px;
+}
+
+.type{
+    padding: 0 5px;
 }
 
 .btn{
     padding: 10px;
     font-family: inherit;
-    font-weight: bolder;
+    font-weight: bold;
     font-size: 15px;
     margin: 10px;
     border: 2px solid red;
     background-color: transparent;
     border-radius: 20px;
     transition: 200ms ease-in;
-    color: white;
+    color: red;
     -webkit-text-fill-color: black;
     -webkit-text-stroke: .5px;
 }
@@ -51,4 +67,6 @@
 .btn:hover{
     background: red;
     color: white;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke: .5px;
 }

@@ -1,7 +1,23 @@
 .wrapper{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(120px, 160px));
+    grid-template-columns: repeat(auto-fit,minmax(160px, 220px));
     gap: 20px;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
+}
+
+.filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    width: 300px;
+    margin-left: auto;
+}
+.search{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 400px;
+    margin: 10px;
+    margin-right: auto; 
 }

@@ -1,0 +1,83 @@
+.typeTag{
+    background-color: rgb(201, 198, 198);
+    color: black;
+    width: 85px;
+    height: 18px;
+    padding: 0 2px;
+    border-radius: 5px;
+    font-family: 'Flexo-Medium', Arial, sans-serif;
+    float: left;
+    font-size: 11px;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    margin: 2px;
+    text-transform: capitalize;
+}
+
+.typeTag.bug{
+    background-color: rgb(11, 155, 11);
+    color: white;
+}
+.typeTag.dark{
+    background-color: rgb(81, 84, 81);
+    color: white;
+}
+.typeTag.dragon{
+    background-color: rgb(117, 191, 190);
+}
+.typeTag.electric{
+    background-color: rgb(245, 238, 108);
+}
+.typeTag.fairy{
+    background-color: pink;
+}
+.typeTag.fighting{
+    background-color: rgb(221, 149, 14);
+    color: white;
+}
+.typeTag.fire{
+    background-color: rgb(240, 92, 18);
+    color: white;
+}
+.typeTag.flying{
+    background-color: rgb(154, 186, 246);
+}
+.typeTag.ghost{
+    background-color: rgb(133, 90, 170);
+    color: white;
+}
+.typeTag.grass{
+    background-color: rgb(117, 191, 117);
+}
+.typeTag.ground{
+    background-color: rgba(189, 95, 63, 0.614);
+    color: white;
+}
+.typeTag.ice{
+    background-color: rgb(120, 218, 248);
+}
+.typeTag.normal{
+    background-color: rgb(228, 230, 234);
+}
+.typeTag.poison{
+    background-color: rgb(225, 104, 229);
+    color: white;
+}
+.typeTag.psychic{
+    background-color: rgb(238, 108, 171);
+    color: white;
+}
+.typeTag.rock{
+    background-color: rgb(84, 98, 84);
+    color: white;
+}
+.typeTag.steel{
+    background-color: rgb(160, 167, 192);
+}
+.typeTag.water{
+    background-color: rgb(98, 223, 248);
+}
+
+
+
+

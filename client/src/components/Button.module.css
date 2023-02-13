@@ -1,9 +1,20 @@
-button {
-    background: red;
-    color: aliceblue;
-    border: 0;
+
+
+   button{
     padding: 8px;
-    border-radius: 8px;
-    cursor: pointer; 
-    margin: 5px;  
-   }
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 12px;
+    margin: 5px;
+    border: 2px solid red;
+    background-color: white;
+    border-radius: 10px;
+    transition: 200ms ease-in;
+    color: red;
+    min-width: 4cm;
+}   
+
+button:hover{
+    background: red;
+    color: white;
+}
