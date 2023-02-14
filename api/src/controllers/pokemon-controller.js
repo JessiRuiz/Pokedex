@@ -1,5 +1,5 @@
-const { Pokemon } = require('../db.js');
-const {findPokemon, getItAll} = require('../services/pokeapi')
+const { Pokemon, Types } = require('../db.js');
+const {findPokemon, getItAll,} = require('../services/pokeapi')
 
 
 const getPokemon = async (id) => {
@@ -22,8 +22,11 @@ const getPokemon = async (id) => {
     }
   }
   else{
-    try{let poke = await Pokemon.findByPk(+id)
+    try{let poke = await Pokemon.findOne({ where: {id: +id}, include: { all: true }})
       if(poke){
+        const [{name: type1}, { name: type2 = null} = {}] = poke.types
+        poke.dataValues.type1 = type1
+        poke.dataValues.type2 = type2
         return poke
       }
     }catch(error){
@@ -46,17 +49,22 @@ const getByName = async (name) => {
       return {id, name, imagen, height, weight,type1, type2, life, attack, defense, speed}
     }
   }catch(error){
-    try{let poke = await Pokemon.findOne({where:{name:name}})
-      if(poke){
-        return poke
+    try{let poke = await Pokemon.findOne({ where: {name:name}, include: { all: true }})
+    if(poke){
+      const [{name: type1}, { name: type2 = null} = {}] = poke.types
+      poke.dataValues.type1 = type1
+      poke.dataValues.type2 = type2
+      return poke
+    }
+      else{
+        throw new Error()
       }
     }catch(error){
     console.log(error, "error")
-    throw new Error ("please introduce a valid name")
+    throw new Error ("Please introduce a valid name!")
     }
   }
 }
-
 
 const getAllPokemon = async (query) => {
   try{let pokemons = await getItAll(query)
@@ -73,9 +81,15 @@ const getAllPokemon = async (query) => {
     pokemons.nextOffset =query.offset*1 + query.limit*1;
     pokemons.previousOffset =query.offset*1 - query.limit*1;
     pokemons.results = await Promise.all (mapResults);
-    const newPokemon = await Pokemon.findAll();
-    pokemons.results.push(...newPokemon);
-
+    const newPoke = await Pokemon.findAll({include: { all: true }})
+    const mappedPoke = newPoke.map((newPokemon)=>{
+      const [{name: type1}, { name: type2 = null} = {}] = newPokemon.types
+      newPokemon.dataValues.type1 = type1
+      newPokemon.dataValues.type2 = type2
+      return newPokemon
+    });
+    
+    pokemons.results.push(...mappedPoke);
     if(query.type ){
       const typeFilter = pokemons.results.filter(({type1, type2})=> type1 === query.type || type2 === query.type)
       pokemons.results = typeFilter 
@@ -129,20 +143,40 @@ const getAllPokemon = async (query) => {
 const addPokemon = async (pokemon) => {
   let poke = pokemon
   try{
-    let existing = await findPokemon (pokemon.name)
+    let existing = await findPokemon (pokemon.name.toLowerCase())
+    
+    console.log(local, "local")
     if (existing) {
       console.log("existing", existing);
-      throw new Error ("The pokemon name is on use")
+      throw new Error ("The pokemon name already exists!")
     }
-  }catch(error){
-   if(error?.response?.status === 404){
-    const newpoke = await Pokemon.create(poke);
-    return newpoke
-   }
-    else{
-      throw error
+  } catch(error) {
+    if(error?.response?.status === 404){
+      let local = await Pokemon.findOne({where:{name:pokemon.name.toLowerCase()}})
+      if (local) {
+        console.log("local", local);
+        throw new Error ("The pokemon name already exists!")
+      }
+      const newpoke = await Pokemon.create(poke);
+      const types = poke.type2 ? [+poke.type1, +poke.type2] : [+poke.type1]
+      await newpoke.setTypes(types)
+      await newpoke.save();
+      return newpoke
     }
+      else{
+        throw error
+      }
   }
   
 };
-  module.exports = {addPokemon, getPokemon, getAllPokemon, getByName};
+
+const getAllTypes = async () => {
+  try{
+    const allTypes = await Types.findAll();
+      return allTypes
+  }catch(error){
+    console.log(error, "error")
+   throw error
+  }
+}
+  module.exports = {addPokemon, getPokemon, getAllPokemon, getByName, getAllTypes};

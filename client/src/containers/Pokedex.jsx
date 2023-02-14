@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import TypeSelector from "../components/TypeSelector";
 import Sort from "../components/Sort";
 import Input from "../components/Input";
+import Error from "../components/Error";
 
 
 
@@ -40,8 +41,9 @@ export default function Pokedex (){
             <TypeSelector value={type} onChange={setType}/>
             <Sort value={sort} onChange={setSort}/>
         </div>
+        {error? <Error error={error}/> : null}
         <div className={styles.wrapper}>
-          {error? error : null}
+         
             {select.map((pokemon)=>(
                 <div key={pokemon.id}>
                     <Card 

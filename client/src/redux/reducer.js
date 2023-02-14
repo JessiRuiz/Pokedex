@@ -1,9 +1,14 @@
-import { CREATE_POKEMON, GET_POKEMON, GET_ALL_POKEMON, GET_BY_NAME, GET_BY_NAME_ERROR } from "./actions";
+import { CREATE_POKEMON, CREATE_POKEMON_ERROR, 
+         GET_POKEMON, GET_POKEMON_ERROR, 
+         GET_ALL_POKEMON, GET_BY_NAME, GET_BY_NAME_ERROR, GET_ALL_TYPES} from "./actions";
 
 export const initialState = {
     pokemons: [],
     pokemonDetails: {},
     pokedex: {results:[]},
+    error: '',
+    newPokemon: "",
+    types: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -13,13 +18,23 @@ const rootReducer = (state = initialState, action) => {
         case CREATE_POKEMON:
             return{
                 ...state,
-                pokemonDetails: [...state.pokemons, action.payload]
+                newPokemon:  action.payload.id
+            }
+        case CREATE_POKEMON_ERROR:
+            return{
+                ...state,
+                error: action.payload
             }
         case GET_POKEMON:
             return{
                 ...state,
                 pokemonDetails: action.payload
             }
+        case GET_POKEMON_ERROR:
+            return{
+                ...state,
+                error: action.payload
+            }   
         case GET_BY_NAME:
             return{
                 ...state,
@@ -34,9 +49,14 @@ const rootReducer = (state = initialState, action) => {
             return{
                 ...state,
                 pokedex: action.payload
-            }    
+            } 
+        case GET_ALL_TYPES:
+            return{
+                ...state,
+                types: action.payload
+            }           
         default:
             return {...state}
-       }
+       } 
 };
 export default rootReducer;
