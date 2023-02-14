@@ -11,6 +11,9 @@ span {
     margin: 15px;
     color: #fff;
 }
+h2{
+    color: rgba(255, 255, 255, 0.771);
+}
 .links > a {
     color: #fff;
     font-size: 20px;

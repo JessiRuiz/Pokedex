@@ -56,7 +56,7 @@ export default function Pokedex (){
                     />
                 </div>))}
         </div> 
-        <Button name={"previous page"} onClick={()=>{(getAllAction(previousOffset))}}/>       
-        <Button name={"next page"} onClick={()=>{(getAllAction(nextOffset))}}/>    
+        {previousOffset>=0? <Button name={"previous page"} onClick={()=>{(getAllAction(previousOffset))}}/> : null}      
+        {nextOffset<=40? <Button name={"next page"} onClick={()=>{(getAllAction(nextOffset))}}/> : null}    
     </div>)
 }
