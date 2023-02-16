@@ -18,7 +18,8 @@ const rootReducer = (state = initialState, action) => {
         case CREATE_POKEMON:
             return{
                 ...state,
-                newPokemon:  action.payload.id
+                newPokemon:  action.payload.id,
+                error: null
             }
         case CREATE_POKEMON_ERROR:
             return{
@@ -28,7 +29,8 @@ const rootReducer = (state = initialState, action) => {
         case GET_POKEMON:
             return{
                 ...state,
-                pokemonDetails: action.payload
+                pokemonDetails: action.payload,
+                error: null
             }
         case GET_POKEMON_ERROR:
             return{
@@ -38,7 +40,8 @@ const rootReducer = (state = initialState, action) => {
         case GET_BY_NAME:
             return{
                 ...state,
-                pokedex:{results:[action.payload]} 
+                pokedex:{results:[action.payload]}, 
+                error: null
             }
         case GET_BY_NAME_ERROR:
             return{

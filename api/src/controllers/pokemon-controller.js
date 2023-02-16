@@ -60,8 +60,7 @@ const getByName = async (name) => {
         throw new Error()
       }
     }catch(error){
-    console.log(error, "error")
-    throw new Error ("Please introduce a valid name!")
+    throw new Error ("Please introduce a valid name or id!")
     }
   }
 }
@@ -78,9 +77,8 @@ const getAllPokemon = async (query) => {
       return {id, name, imagen, type1, type2};
     })
     
-    pokemons.nextOffset =query.offset*1 + query.limit*1;
-    pokemons.previousOffset =query.offset*1 - query.limit*1;
     pokemons.results = await Promise.all (mapResults);
+
     const newPoke = await Pokemon.findAll({include: { all: true}})
     const mappedPoke = newPoke.map(p => p.get({ plain: true })).map((newPokemon)=>{
       const [{name: type1}, { name: type2 = null} = {}] = newPokemon.types
@@ -94,6 +92,10 @@ const getAllPokemon = async (query) => {
       const typeFilter = pokemons.results.filter(({type1, type2})=> type1 === query.type || type2 === query.type)
       pokemons.results = typeFilter 
     }
+
+    pokemons.nextOffset = query.offset*1 + query.limit*1 > pokemons.results.length? null : query.offset*1 + query.limit*1
+    pokemons.previousOffset = query.offset>=0? query.offset*1 - query.limit*1 : null 
+
     if(query.sort === "id" && query.order === "ascending"){
       const ascendingId = pokemons.results.sort((a, b) => a.id - b.id);
       pokemons.results = ascendingId
@@ -132,7 +134,7 @@ const getAllPokemon = async (query) => {
       });
       pokemons.results = descendingName
     }
-    pokemons.results= pokemons.results.slice(query.offset, pokemons.nextOffset)
+    pokemons.results= pokemons.results.slice(query.offset, query.offset*1 + query.limit*1)
     return pokemons
     
   }catch(error){
@@ -145,7 +147,6 @@ const addPokemon = async (pokemon) => {
   try{
     let existing = await findPokemon (pokemon.name.toLowerCase())
     
-    console.log(local, "local")
     if (existing) {
       console.log("existing", existing);
       throw new Error ("The pokemon name already exists!")

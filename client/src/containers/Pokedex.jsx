@@ -38,7 +38,7 @@ export default function Pokedex (){
     <div> 
         <div className={styles.search}>
         <Input value={search} onChange={setSearch}/>
-        <Button name={"Search By Name"} onClick={()=>{dispatch(actions.getByName(search.toLowerCase()))}}/>
+        <Button name={"Search By Name Or Id"} onClick={()=>{dispatch(actions.getByName(search.toLowerCase()))}}/>
         </div>
         <div className={styles.filter}>
             <TypeSelector value={type} isDefault={true} onChange={setWholeType}/>
@@ -60,6 +60,6 @@ export default function Pokedex (){
                 </div>))}
         </div> 
         {previousOffset>=0? <Button name={"previous page"} onClick={()=>{(getAllAction(previousOffset))}}/> : null}      
-        {nextOffset<=select.length? <Button name={"next page"} onClick={()=>{(getAllAction(nextOffset))}}/> : null}    
+        {nextOffset? <Button name={"next page"} onClick={()=>{(getAllAction(nextOffset))}}/> : null}    
     </div>)
 }
