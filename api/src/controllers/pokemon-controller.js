@@ -81,11 +81,11 @@ const getAllPokemon = async (query) => {
     pokemons.nextOffset =query.offset*1 + query.limit*1;
     pokemons.previousOffset =query.offset*1 - query.limit*1;
     pokemons.results = await Promise.all (mapResults);
-    const newPoke = await Pokemon.findAll({include: { all: true }})
-    const mappedPoke = newPoke.map((newPokemon)=>{
+    const newPoke = await Pokemon.findAll({include: { all: true}})
+    const mappedPoke = newPoke.map(p => p.get({ plain: true })).map((newPokemon)=>{
       const [{name: type1}, { name: type2 = null} = {}] = newPokemon.types
-      newPokemon.dataValues.type1 = type1
-      newPokemon.dataValues.type2 = type2
+      newPokemon.type1 = type1
+      newPokemon.type2 = type2
       return newPokemon
     });
     

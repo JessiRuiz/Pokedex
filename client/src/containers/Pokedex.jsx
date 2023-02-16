@@ -21,15 +21,18 @@ export default function Pokedex (){
     const [type, setType] = useState('');
     const [sort, setSort] = useState({});
     const [search, setSearch] = useState('');
+    const [typeName, setTypeName] = useState('');
     const history = useHistory()
 
     const getAllAction = (offset=0) => {
-        dispatch(actions.getAllPokemon({type, offset, ...sort}))
+        dispatch(actions.getAllPokemon({type:typeName, offset, ...sort}))
     }
 
     useEffect(() => {
         getAllAction()
     },[type, sort.order, sort.sort])
+
+    const setWholeType = (id, name)=>{setType(id); setTypeName(name)}
 
     return (
     <div> 
@@ -38,7 +41,7 @@ export default function Pokedex (){
         <Button name={"Search By Name"} onClick={()=>{dispatch(actions.getByName(search.toLowerCase()))}}/>
         </div>
         <div className={styles.filter}>
-            <TypeSelector value={type} onChange={setType}/>
+            <TypeSelector value={type} isDefault={true} onChange={setWholeType}/>
             <Sort value={sort} onChange={setSort}/>
         </div>
         {error? <Error error={error}/> : null}
@@ -57,6 +60,6 @@ export default function Pokedex (){
                 </div>))}
         </div> 
         {previousOffset>=0? <Button name={"previous page"} onClick={()=>{(getAllAction(previousOffset))}}/> : null}      
-        {nextOffset<=40? <Button name={"next page"} onClick={()=>{(getAllAction(nextOffset))}}/> : null}    
+        {nextOffset<=select.length? <Button name={"next page"} onClick={()=>{(getAllAction(nextOffset))}}/> : null}    
     </div>)
 }

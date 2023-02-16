@@ -26,7 +26,7 @@ export default function CreatePokemon (){
     const error = useSelector((state)=> state.error)
     
     const dispatch = useDispatch()
-    useEffect(() => {if(select){history.push(`pokedex/${select}`)}},[select])
+    useEffect(() => {if(select){history.push(`pokedex/${select}`)}},[select, history])
 
 
     const handleSubmit = async (e) => {
@@ -43,9 +43,9 @@ export default function CreatePokemon (){
             <label> Name </label>
             <Input value={name} placeholder={"The name should not exceed 30 characters"} onChange={setName}/>
             <label> Type </label>
-            <TypeSelector value={type1} onChange={setType}/>
+            <TypeSelector value={type1} isDefault={false} onChange={setType}/>
             <label> Type 2 </label>
-            <TypeSelector value={type2} onChange={setType2}/>
+            <TypeSelector value={type2} isDefault={true} onChange={setType2}/>
             <label> Image </label>
             <Input value={imagen} placeholder={"image url"} onChange={setImagen}/>
             <label> Life </label>
